@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cab'Qual — Certification ISO & RSE du premier coup</title>
+  <meta name="description" content="Cabinet de conseil en management qualité & RSE. 100% de certification au 1er audit. 20 ans d'expérience, 300+ projets réussis.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#1E3A5F', light: '#2A4F7F', dark: '#0C1220' },
+            gold: { DEFAULT: '#C8A951', light: '#D4BC72', dark: '#A88B3D' },
+            cream: '#FAFAF8',
+            slate: { accent: '#64748B' }
+          },
+          fontFamily: {
+            serif: ['Instrument Serif', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ===== BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #1E3A5F; background: #FAFAF8; overflow-x: hidden; }
+    ::selection { background: #C8A951; color: #0C1220; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ===== MARQUEE ===== */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track { animation: marquee 30s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* ===== HERO GLOW ===== */
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,169,81,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: left 0.3s ease-out, top 0.3s ease-out;
+    }
+
+    /* ===== METRIC CARD ===== */
+    .metric-card {
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(30,58,95,0.08);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    .metric-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(30,58,95,0.1);
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      background: #1E3A5F;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,169,81,0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(30,58,95,0.25); }
+    .btn-primary:hover::after { opacity: 1; }
+
+    .btn-secondary {
+      background: transparent;
+      color: #1E3A5F;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 2px solid rgba(30,58,95,0.15);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-secondary:hover { border-color: #C8A951; color: #C8A951; transform: translateY(-2px); }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #C8A951, #D4BC72);
+      color: #0C1220;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,169,81,0.35); }
+
+    /* ===== PROBLEM CARDS ===== */
+    .problem-card {
+      border: 1px solid rgba(30,58,95,0.08);
+      border-radius: 16px;
+      padding: 2.5rem;
+      background: white;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px rgba(30,58,95,0.08); }
+
+    /* ===== TIMELINE ===== */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #C8A951, rgba(200,169,81,0.1));
+      transform: translateX(-50%);
+    }
+    .timeline-dot {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C8A951, #D4BC72);
+      display: flex; align-items: center; justify-content: center;
+      color: #0C1220;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 8px rgba(200,169,81,0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== TESTIMONIAL ===== */
+    .testimonial-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .testimonial-card:hover { border-color: rgba(200,169,81,0.3); transform: translateY(-4px); }
+
+    /* ===== COUNTER ===== */
+    .counter-value { font-variant-numeric: tabular-nums; }
+
+    /* ===== OBJECTION TOOLTIP ===== */
+    .objection-toggle { cursor: pointer; }
+    .objection-content {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin 0.3s ease;
+    }
+    .objection-content.open { max-height: 200px; opacity: 1; margin-top: 1rem; }
+
+    /* ===== CHECK LIST ===== */
+    .check-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .check-icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(200,169,81,0.15);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* ===== NAV ===== */
+    .nav-blur {
+      backdrop-filter: blur(16px);
+      background: rgba(250,250,248,0.85);
+      border-bottom: 1px solid rgba(30,58,95,0.06);
+    }
+    .nav-blur.scrolled { box-shadow: 0 4px 24px rgba(30,58,95,0.06); }
+
+    /* ===== GRAIN TEXTURE ===== */
+    .grain::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .timeline-line { left: 24px; }
+      .hero-glow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="nav-blur fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="nav">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-navy flex items-center justify-center">
+            <span class="text-gold font-serif text-xl font-bold">C</span>
+          </div>
+          <span class="font-serif text-2xl text-navy">Cab'Qual</span>
+        </a>
+        <!-- Links (desktop) -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#methode" class="text-sm font-medium text-slate-accent hover:text-navy transition-colors">Méthode</a>
+          <a href="#accompagnement" class="text-sm font-medium text-slate-accent hover:text-navy transition-colors">Accompagnement</a>
+          <a href="#temoignages" class="text-sm font-medium text-slate-accent hover:text-navy transition-colors">Témoignages</a>
+          <a href="#contact" class="btn-primary text-sm !py-3 !px-6">Diagnostic gratuit</a>
+        </div>
+        <!-- Mobile menu button -->
+        <button class="md:hidden p-2" id="mobile-toggle" aria-label="Menu">
+          <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div class="md:hidden overflow-hidden max-h-0 transition-all duration-300" id="mobile-menu">
+        <div class="pb-6 pt-2 flex flex-col gap-4">
+          <a href="#methode" class="text-sm font-medium text-slate-accent">Méthode</a>
+          <a href="#accompagnement" class="text-sm font-medium text-slate-accent">Accompagnement</a>
+          <a href="#temoignages" class="text-sm font-medium text-slate-accent">Témoignages</a>
+          <a href="#contact" class="btn-primary text-sm text-center !py-3">Diagnostic gratuit</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ==================== SECTION 1 : HERO ==================== -->
+  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden" id="hero">
+    <div class="hero-glow" id="hero-glow"></div>
+
+    <!-- Decorative elements -->
+    <div class="absolute top-32 right-12 w-72 h-72 rounded-full bg-gold/5 blur-3xl"></div>
+    <div class="absolute bottom-20 left-8 w-48 h-48 rounded-full bg-navy/5 blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32 relative z-10">
+      <div class="max-w-4xl">
+        <!-- Badge -->
+        <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-8">
+          <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+          <span class="text-sm font-medium text-gold-dark font-mono">100% de certification au 1er audit</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="reveal reveal-delay-1 font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight text-navy mb-8">
+          Obtenez votre certification ISO
+          <span class="relative inline-block">
+            <span class="relative z-10">du premier coup</span>
+            <span class="absolute bottom-2 left-0 right-0 h-3 bg-gold/20 -z-0 rounded-sm"></span>
+          </span>
+          <br class="hidden lg:block">
+          <span class="text-slate-accent">sans mobiliser vos équipes pendant des mois</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="reveal reveal-delay-2 text-lg sm:text-xl text-slate-accent leading-relaxed max-w-2xl mb-10">
+          Cab'Qual conçoit des démarches qualité & RSE vivantes, intégrées et fluides.
+          Nous prenons en charge l'intégralité du processus pour que vous vous concentriez sur votre coeur de métier.
+        </p>
+
+        <!-- CTAs -->
+        <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4 mb-16">
+          <a href="#contact" class="btn-primary inline-flex items-center justify-center gap-2">
+            Demander un diagnostic gratuit
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#methode" class="btn-secondary inline-flex items-center justify-center gap-2">
+            Découvrir notre méthode
+          </a>
+        </div>
+
+        <!-- Metrics -->
+        <div class="reveal reveal-delay-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="metric-card rounded-2xl p-5 text-center">
+            <div class="text-3xl font-serif text-navy counter-value" data-target="20" data-suffix="+">0</div>
+            <div class="text-xs font-medium text-slate-accent mt-1 uppercase tracking-wider">Ans d'expérience</div>
+          </div>
+          <div class="metric-card rounded-2xl p-5 text-center">
+            <div class="text-3xl font-serif text-navy counter-value" data-target="300" data-suffix="+">0</div>
+            <div class="text-xs font-medium text-slate-accent mt-1 uppercase tracking-wider">Projets réussis</div>
+          </div>
+          <div class="metric-card rounded-2xl p-5 text-center">
+            <div class="text-3xl font-serif text-navy">9.5<span class="text-gold">/10</span></div>
+            <div class="text-xs font-medium text-slate-accent mt-1 uppercase tracking-wider">Satisfaction client</div>
+          </div>
+          <div class="metric-card rounded-2xl p-5 text-center">
+            <div class="text-3xl font-serif text-navy counter-value" data-target="12">0</div>
+            <div class="text-xs font-medium text-slate-accent mt-1 uppercase tracking-wider">Normes maîtrisées</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee logos -->
+    <div class="absolute bottom-0 left-0 right-0 border-t border-navy/5 bg-white/50 backdrop-blur-sm">
+      <div class="overflow-hidden py-5">
+        <div class="flex marquee-track" style="width: max-content;">
+          <div class="flex items-center gap-12 px-6">
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Architecture</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Bâtiment & BTP</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Agroalimentaire</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Services Financiers</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Santé</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Formation</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Industrie</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Transport</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Énergie</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Collectivités</span>
+          </div>
+          <div class="flex items-center gap-12 px-6">
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Architecture</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Bâtiment & BTP</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Agroalimentaire</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Services Financiers</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Santé</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Formation</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Industrie</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Transport</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Énergie</span>
+            <span class="text-slate-accent/20">|</span>
+            <span class="text-sm font-medium text-slate-accent/40 whitespace-nowrap uppercase tracking-widest">Collectivités</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== SECTION 2 : PROBLEM AGITATION ==================== -->
+  <section class="py-24 lg:py-32 bg-white relative" id="methode">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- Section header -->
+      <div class="max-w-3xl mb-16">
+        <span class="reveal text-sm font-mono font-medium text-gold uppercase tracking-widest mb-4 block">Le constat</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-4xl sm:text-5xl lg:text-6xl text-navy leading-tight mb-6">
+          Soyons honnêtes&nbsp;&mdash; est-ce vraiment la bonne façon de gérer votre
+          <span class="italic text-gold-dark">démarche qualité</span>&thinsp;?
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-slate-accent leading-relaxed">
+          Avant de vous montrer notre approche, regardons pourquoi les méthodes habituelles échouent.
+        </p>
+      </div>
+
+      <!-- Problem cards -->
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Card 1 : Current way -->
+        <div class="reveal problem-card">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-serif text-2xl text-navy">Votre méthode actuelle</h3>
+          </div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-0.5 flex-shrink-0 text-lg">&times;</span>
+              <span class="text-slate-accent leading-relaxed">Des fichiers Excel et documents Word éparpillés sur plusieurs serveurs, jamais à jour</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-0.5 flex-shrink-0 text-lg">&times;</span>
+              <span class="text-slate-accent leading-relaxed">Des équipes non formées qui improvisent avant chaque audit</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-0.5 flex-shrink-0 text-lg">&times;</span>
+              <span class="text-slate-accent leading-relaxed">Un responsable qualité débordé qui cumule cette mission avec d'autres fonctions</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-0.5 flex-shrink-0 text-lg">&times;</span>
+              <span class="text-slate-accent leading-relaxed">Du stress et de l'incertitude à chaque passage de l'auditeur</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2 : Other solutions -->
+        <div class="reveal reveal-delay-1 problem-card">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-serif text-2xl text-navy">Les autres solutions</h3>
+          </div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-orange-400 mt-0.5 flex-shrink-0 text-lg">&times;</span>
+              <span class="text-slate-accent leading-relaxed">Les gros cabinets impersonnels qui appliquent la même recette pour tout le monde</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-orange-400 mt-0.5 flex-shrink-0 text-lg">&times;</span>
+              <span class="text-slate-accent leading-relaxed">Les consultants généralistes qui connaissent la théorie mais pas votre réalité terrain</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-orange-400 mt-0.5 flex-shrink-0 text-lg">&times;</span>
+              <span class="text-slate-accent leading-relaxed">Des livrables lourds et inexploitables que personne ne lit après la mission</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-orange-400 mt-0.5 flex-shrink-0 text-lg">&times;</span>
+              <span class="text-slate-accent leading-relaxed">Des accompagnements qui vous rendent dépendant au lieu de vous rendre autonomes</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Transition CTA -->
+      <div class="reveal mt-12 text-center">
+        <a href="#accompagnement" class="btn-secondary inline-flex items-center gap-2">
+          Découvrez une approche différente
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== SECTION 3 : COST OF INACTION ==================== -->
+  <section class="py-24 lg:py-32 bg-navy-dark text-white relative grain overflow-hidden">
+    <!-- Decorative -->
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/5 blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left : content -->
+        <div>
+          <span class="reveal text-sm font-mono font-medium text-gold uppercase tracking-widest mb-4 block">Le coût de l'inaction</span>
+          <h2 class="reveal reveal-delay-1 font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight mb-8">
+            Combien vous coûte l'absence de
+            <span class="text-gold">certification</span>&thinsp;?
+          </h2>
+          <div class="space-y-8">
+            <!-- Stat 1 -->
+            <div class="reveal reveal-delay-2 flex items-start gap-5">
+              <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center">
+                <span class="text-2xl font-serif text-gold">67%</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Des appels d'offres publics exigent une certification ISO</h4>
+                <p class="text-white/60 leading-relaxed">Sans certification, vous êtes invisible sur la majorité des marchés publics et de nombreux appels d'offres privés.</p>
+              </div>
+            </div>
+            <!-- Stat 2 -->
+            <div class="reveal reveal-delay-3 flex items-start gap-5">
+              <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center">
+                <span class="text-xl font-serif text-gold">20%</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">De surcoûts opérationnels évitables</h4>
+                <p class="text-white/60 leading-relaxed">Non-conformités, reprises, erreurs de process&nbsp;&mdash; un système qualité structuré réduit drastiquement ces pertes.</p>
+              </div>
+            </div>
+            <!-- Stat 3 -->
+            <div class="reveal reveal-delay-4 flex items-start gap-5">
+              <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center">
+                <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Vos concurrents certifiés gagnent des parts de marché</h4>
+                <p class="text-white/60 leading-relaxed">Chaque mois sans certification est un mois où vos concurrents construisent un avantage compétitif irréversible.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right : visual -->
+        <div class="reveal reveal-delay-2 relative">
+          <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 lg:p-10">
+            <div class="text-center mb-8">
+              <span class="font-mono text-sm text-gold/70 uppercase tracking-widest">Impact estimé sur 12 mois</span>
+            </div>
+            <div class="space-y-6">
+              <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                <span class="text-white/70">Marchés perdus (AO non éligibles)</span>
+                <span class="font-mono text-xl text-gold font-semibold">~150k&euro;</span>
+              </div>
+              <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                <span class="text-white/70">Surcoûts opérationnels</span>
+                <span class="font-mono text-xl text-gold font-semibold">~80k&euro;</span>
+              </div>
+              <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                <span class="text-white/70">Pénalités / non-conformités</span>
+                <span class="font-mono text-xl text-gold font-semibold">~30k&euro;</span>
+              </div>
+              <div class="flex justify-between items-end pt-2">
+                <span class="font-semibold text-lg">Coût total estimé</span>
+                <span class="font-mono text-2xl text-gold font-bold">~260k&euro;/an</span>
+              </div>
+            </div>
+          </div>
+          <!-- Glow behind -->
+          <div class="absolute inset-0 rounded-3xl bg-gold/5 blur-2xl -z-10 scale-105"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== SECTION 4 : SOLUTION 3 ETAPES ==================== -->
+  <section class="py-24 lg:py-32 bg-cream relative" id="accompagnement">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="reveal text-sm font-mono font-medium text-gold uppercase tracking-widest mb-4 block">Notre accompagnement</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-4xl sm:text-5xl lg:text-6xl text-navy leading-tight mb-6">
+          Voici comment nous vous menons vers la
+          <span class="italic text-gold-dark">certification</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-slate-accent leading-relaxed">
+          Un processus clair en 3 étapes, sans jargon ni complexité inutile. Vous savez exactement où vous en êtes à chaque instant.
+        </p>
+      </div>
+
+      <!-- Timeline Steps -->
+      <div class="relative">
+        <!-- Vertical line (desktop) -->
+        <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-gold via-gold/40 to-transparent"></div>
+
+        <!-- Step 1 -->
+        <div class="reveal relative lg:grid lg:grid-cols-2 lg:gap-16 mb-20 lg:mb-28 items-center">
+          <!-- Timeline dot (desktop) -->
+          <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-8">
+            <div class="timeline-dot">1</div>
+          </div>
+          <!-- Left content -->
+          <div class="lg:pr-16 lg:text-right">
+            <div class="flex lg:hidden items-center gap-4 mb-4">
+              <div class="timeline-dot text-sm">1</div>
+              <span class="font-mono text-sm text-gold uppercase tracking-widest">Étape 1</span>
+            </div>
+            <span class="hidden lg:block font-mono text-sm text-gold uppercase tracking-widest mb-3">Étape 1</span>
+            <h3 class="font-serif text-3xl lg:text-4xl text-navy mb-4">Diagnostic & Stratégie</h3>
+            <p class="text-slate-accent leading-relaxed mb-4">
+              Nous réalisons un audit complet de votre organisation : cartographie des écarts, analyse des risques, et construction d'un plan d'action sur-mesure aligné avec vos objectifs business.
+            </p>
+            <div class="objection-toggle inline-flex items-center gap-2 text-sm font-medium text-gold-dark hover:text-gold transition-colors" onclick="toggleObjection(this)">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              "Ça va prendre combien de temps ?"
+            </div>
+            <div class="objection-content bg-gold/5 rounded-xl p-4">
+              <p class="text-sm text-slate-accent leading-relaxed">Le diagnostic prend en moyenne 2 à 5 jours selon la taille de votre structure. C'est un investissement ponctuel qui vous fait gagner des mois sur la suite.</p>
+            </div>
+          </div>
+          <!-- Right visual -->
+          <div class="mt-8 lg:mt-0 lg:pl-16">
+            <div class="rounded-2xl bg-white border border-navy/5 p-6 shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-3 h-3 rounded-full bg-red-300"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-300"></div>
+                <div class="w-3 h-3 rounded-full bg-green-300"></div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-gold"></div>
+                  <div class="h-3 bg-navy/10 rounded-full w-3/4"></div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-gold"></div>
+                  <div class="h-3 bg-navy/10 rounded-full w-1/2"></div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                  <div class="h-3 bg-green-100 rounded-full w-5/6"></div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-gold"></div>
+                  <div class="h-3 bg-navy/10 rounded-full w-2/3"></div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-navy/5">
+                  <div class="flex justify-between text-sm">
+                    <span class="text-slate-accent">Conformité globale</span>
+                    <span class="font-mono font-semibold text-navy">47%</span>
+                  </div>
+                  <div class="mt-2 h-2 bg-navy/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-gold to-gold-light rounded-full" style="width: 47%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="reveal relative lg:grid lg:grid-cols-2 lg:gap-16 mb-20 lg:mb-28 items-center">
+          <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-8">
+            <div class="timeline-dot">2</div>
+          </div>
+          <!-- Left visual (reversed order on desktop) -->
+          <div class="order-2 lg:order-1 mt-8 lg:mt-0 lg:pr-16">
+            <div class="rounded-2xl bg-white border border-navy/5 p-6 shadow-sm">
+              <div class="grid grid-cols-3 gap-3 mb-4">
+                <div class="col-span-2 h-20 bg-navy/5 rounded-xl flex items-center justify-center">
+                  <svg class="w-8 h-8 text-navy/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <div class="h-20 bg-gold/10 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span class="text-sm text-slate-accent">Processus documentés</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span class="text-sm text-slate-accent">Équipes formées</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span class="text-sm text-slate-accent">Indicateurs en place</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-4 h-4 rounded-full border-2 border-gold animate-spin" style="border-top-color: transparent;"></div>
+                  <span class="text-sm text-slate-accent">Audit interne en cours...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right content -->
+          <div class="order-1 lg:order-2 lg:pl-16">
+            <div class="flex lg:hidden items-center gap-4 mb-4">
+              <div class="timeline-dot text-sm">2</div>
+              <span class="font-mono text-sm text-gold uppercase tracking-widest">Étape 2</span>
+            </div>
+            <span class="hidden lg:block font-mono text-sm text-gold uppercase tracking-widest mb-3">Étape 2</span>
+            <h3 class="font-serif text-3xl lg:text-4xl text-navy mb-4">Mise en oeuvre & Formation</h3>
+            <p class="text-slate-accent leading-relaxed mb-4">
+              Nous construisons avec vous un système de management vivant : documentation simplifiée, processus intégrés à votre quotidien, et formation de vos équipes pour garantir l'autonomie.
+            </p>
+            <div class="objection-toggle inline-flex items-center gap-2 text-sm font-medium text-gold-dark hover:text-gold transition-colors" onclick="toggleObjection(this)">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              "Est-ce que ça va perturber notre activité ?"
+            </div>
+            <div class="objection-content bg-gold/5 rounded-xl p-4">
+              <p class="text-sm text-slate-accent leading-relaxed">Notre approche s'intègre à vos routines existantes. Pas de grand bouleversement : on avance étape par étape, au rythme de vos équipes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="reveal relative lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+          <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-8">
+            <div class="timeline-dot">3</div>
+          </div>
+          <!-- Left content -->
+          <div class="lg:pr-16 lg:text-right">
+            <div class="flex lg:hidden items-center gap-4 mb-4">
+              <div class="timeline-dot text-sm">3</div>
+              <span class="font-mono text-sm text-gold uppercase tracking-widest">Étape 3</span>
+            </div>
+            <span class="hidden lg:block font-mono text-sm text-gold uppercase tracking-widest mb-3">Étape 3</span>
+            <h3 class="font-serif text-3xl lg:text-4xl text-navy mb-4">Certification & Au-delà</h3>
+            <p class="text-slate-accent leading-relaxed mb-4">
+              Audit blanc complet, préparation finale de vos équipes, et accompagnement le jour J. Puis suivi post-certification pour que votre système vive et s'améliore en continu.
+            </p>
+            <div class="objection-toggle inline-flex items-center gap-2 text-sm font-medium text-gold-dark hover:text-gold transition-colors lg:flex-row-reverse" onclick="toggleObjection(this)">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              "Et si on échoue à l'audit ?"
+            </div>
+            <div class="objection-content bg-gold/5 rounded-xl p-4">
+              <p class="text-sm text-slate-accent leading-relaxed">En 20 ans et 300+ projets, 100% de nos clients ont été certifiés au premier audit. Notre audit blanc identifie et corrige tout avant le jour J.</p>
+            </div>
+          </div>
+          <!-- Right visual -->
+          <div class="mt-8 lg:mt-0 lg:pl-16">
+            <div class="rounded-2xl bg-white border border-navy/5 p-6 shadow-sm text-center">
+              <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center mb-4">
+                <svg class="w-12 h-12 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+              </div>
+              <h4 class="font-serif text-2xl text-navy mb-2">Certifié ISO</h4>
+              <p class="text-sm text-slate-accent mb-4">Votre organisation est officiellement certifiée</p>
+              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-600 text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Audit réussi du premier coup
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="reveal text-center mt-20">
+        <a href="#contact" class="btn-primary inline-flex items-center gap-2">
+          Commencer mon diagnostic gratuit
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== SECTION 5 : SOCIAL PROOF ==================== -->
+  <section class="py-24 lg:py-32 bg-navy-dark text-white relative grain overflow-hidden" id="temoignages">
+    <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-gold/5 blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="reveal text-sm font-mono font-medium text-gold uppercase tracking-widest mb-4 block">Témoignages</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">
+          <span class="counter-value" data-target="300" data-suffix="+">0</span> entreprises nous font déjà
+          <span class="text-gold">confiance</span>
+        </h2>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+        <!-- Testimonial 1 -->
+        <div class="reveal testimonial-card">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <blockquote class="text-lg leading-relaxed mb-6 text-white/90">
+            &laquo;&thinsp;Cab'Qual a transformé notre vision de la qualité. En 4 mois, nous étions certifiés ISO 9001 sans que nos équipes aient eu l'impression de porter un projet en plus de leur charge habituelle.&thinsp;&raquo;
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-navy-light to-navy flex items-center justify-center text-gold font-serif text-lg">M</div>
+            <div>
+              <div class="font-semibold">Marie Dupont</div>
+              <div class="text-sm text-white/50">Directrice Générale &mdash; ArchiDesign</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="reveal reveal-delay-1 testimonial-card">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <blockquote class="text-lg leading-relaxed mb-6 text-white/90">
+            &laquo;&thinsp;Nous avons essayé deux cabinets avant Cab'Qual. La différence&thinsp;? Ils ne nous ont pas livré un classeur de 500 pages, mais un système simple que nos équipes utilisent vraiment au quotidien.&thinsp;&raquo;
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-navy-light to-navy flex items-center justify-center text-gold font-serif text-lg">P</div>
+            <div>
+              <div class="font-semibold">Philippe Martin</div>
+              <div class="text-sm text-white/50">DG &mdash; Groupe Alimentaire du Sud</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics bar -->
+      <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="text-4xl lg:text-5xl font-serif text-gold counter-value" data-target="20" data-suffix="+">0</div>
+          <div class="text-sm text-white/50 mt-2 uppercase tracking-wider">Ans d'expérience</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl lg:text-5xl font-serif text-gold counter-value" data-target="300" data-suffix="+">0</div>
+          <div class="text-sm text-white/50 mt-2 uppercase tracking-wider">Projets menés</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl lg:text-5xl font-serif text-gold counter-value" data-target="12">0</div>
+          <div class="text-sm text-white/50 mt-2 uppercase tracking-wider">Normes maîtrisées</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl lg:text-5xl font-serif text-gold">9.5<span class="text-white/30">/10</span></div>
+          <div class="text-sm text-white/50 mt-2 uppercase tracking-wider">Satisfaction client</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== SECTION 6 : URGENCY + CTA ==================== -->
+  <section class="py-24 lg:py-32 bg-cream relative overflow-hidden" id="contact">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-3xl -translate-y-1/2"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="reveal text-sm font-mono font-medium text-gold uppercase tracking-widest mb-4 block">Passez à l'action</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-4xl sm:text-5xl lg:text-6xl text-navy leading-tight mb-6">
+          Ces entreprises sont déjà certifiées.
+          <br><span class="text-gold-dark italic">Et vous&thinsp;?</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-slate-accent leading-relaxed mb-12">
+          Chaque mois sans certification est un mois de marchés perdus et de surcoûts évitables. Lancez votre démarche dès aujourd'hui.
+        </p>
+
+        <!-- Risk reversal checklist -->
+        <div class="reveal reveal-delay-3 max-w-md mx-auto mb-10 text-left space-y-4">
+          <div class="check-item">
+            <div class="check-icon">
+              <svg class="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-navy font-medium">Diagnostic initial gratuit et sans engagement</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">
+              <svg class="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-navy font-medium">Nous prenons en charge l'intégralité de la mise en place</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">
+              <svg class="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-navy font-medium">100% de certification garantie au premier audit</span>
+          </div>
+        </div>
+
+        <!-- CTA buttons -->
+        <div class="reveal reveal-delay-4 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#" class="btn-gold inline-flex items-center justify-center gap-2 text-lg px-10 py-5">
+            Réserver mon diagnostic gratuit
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+        <p class="reveal reveal-delay-5 text-sm text-slate-accent/60 mt-6">30 minutes &middot; En visio ou par téléphone &middot; Sans engagement</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== SECTION 7 : ALTERNATIVE CTA ==================== -->
+  <section class="py-20 lg:py-24 bg-white border-t border-navy/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left -->
+        <div>
+          <span class="text-sm font-mono font-medium text-gold uppercase tracking-widest mb-4 block">Pour les décideurs prudents</span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-navy leading-tight mb-4">
+            Pas encore prêt&thinsp;?
+            <br>Commencez par vous <span class="italic text-gold-dark">informer</span>.
+          </h2>
+          <p class="text-lg text-slate-accent leading-relaxed mb-8">
+            Téléchargez notre guide gratuit qui détaille les 7 étapes clés pour réussir votre certification ISO, les pièges à éviter, et un calendrier type de projet.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-secondary inline-flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Télécharger le guide gratuit
+            </a>
+            <a href="tel:+33000000000" class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-slate-accent hover:text-navy transition-colors px-6 py-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              Ou appelez-nous directement
+            </a>
+          </div>
+        </div>
+        <!-- Right visual -->
+        <div class="relative">
+          <div class="rounded-2xl bg-gradient-to-br from-cream to-white border border-navy/5 p-8 shadow-sm">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-navy text-sm">Guide PDF gratuit</h4>
+                <p class="text-xs text-slate-accent">24 pages &middot; Mis à jour 2025</p>
+              </div>
+            </div>
+            <div class="space-y-3 text-sm text-slate-accent">
+              <div class="flex items-center gap-2"><span class="text-gold">01.</span> Comprendre les exigences de la norme</div>
+              <div class="flex items-center gap-2"><span class="text-gold">02.</span> Cartographier vos processus existants</div>
+              <div class="flex items-center gap-2"><span class="text-gold">03.</span> Identifier les écarts critiques</div>
+              <div class="flex items-center gap-2"><span class="text-gold">04.</span> Construire votre plan d'action</div>
+              <div class="flex items-center gap-2"><span class="text-gold">05.</span> Mobiliser vos équipes efficacement</div>
+              <div class="flex items-center gap-2"><span class="text-gold">06.</span> Préparer l'audit de certification</div>
+              <div class="flex items-center gap-2"><span class="text-gold">07.</span> Pérenniser votre système qualité</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-16 bg-navy-dark text-white/60 relative grain">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <!-- Col 1 : Brand -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+              <span class="text-gold font-serif text-xl font-bold">C</span>
+            </div>
+            <span class="font-serif text-2xl text-white">Cab'Qual</span>
+          </div>
+          <p class="leading-relaxed max-w-sm mb-6">L'art de la stratégie au service de démarches ISO & RSE vivantes, intégrées et fluides.</p>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+              Certifié ISO 9001
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
+              Certifié ISO 14001
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
+              Qualiopi
+            </span>
+          </div>
+        </div>
+        <!-- Col 2 : Links -->
+        <div>
+          <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Accompagnements</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#" class="hover:text-gold transition-colors">ISO 9001</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">ISO 14001</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">ISO 45001</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">RSE & ISO 26000</a></li>
+            <li><a href="#" class="hover:text-gold transition-colors">Qualiopi</a></li>
+          </ul>
+        </div>
+        <!-- Col 3 : Contact -->
+        <div>
+          <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Contact</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="mailto:contact@cabqual.fr" class="hover:text-gold transition-colors">contact@cabqual.fr</a></li>
+            <li><a href="tel:+33000000000" class="hover:text-gold transition-colors">+33 (0)0 00 00 00 00</a></li>
+            <li class="pt-2"><a href="#" class="hover:text-gold transition-colors">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Bottom -->
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+        <span>&copy; 2025 Cab'Qual. Tous droits réservés.</span>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-gold transition-colors">Mentions légales</a>
+          <a href="#" class="hover:text-gold transition-colors">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // ===== Scroll Reveal =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ===== Counter Animation =====
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          const suffix = el.dataset.suffix || '';
+          const duration = 2000;
+          const start = performance.now();
+
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(eased * target);
+            el.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter-value').forEach(el => counterObserver.observe(el));
+
+    // ===== Hero Cursor Glow =====
+    const heroSection = document.getElementById('hero');
+    const heroGlow = document.getElementById('hero-glow');
+    if (heroSection && heroGlow) {
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        heroGlow.style.left = (e.clientX - rect.left) + 'px';
+        heroGlow.style.top = (e.clientY - rect.top) + 'px';
+      });
+    }
+
+    // ===== Nav Scroll Effect =====
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ===== Mobile Menu Toggle =====
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px';
+      mobileMenu.style.maxHeight = isOpen ? '0px' : '300px';
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => { mobileMenu.style.maxHeight = '0px'; });
+    });
+
+    // ===== Objection Toggle =====
+    function toggleObjection(el) {
+      const content = el.nextElementSibling;
+      content.classList.toggle('open');
+    }
+
+    // ===== Smooth Scroll for Anchor Links =====
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
